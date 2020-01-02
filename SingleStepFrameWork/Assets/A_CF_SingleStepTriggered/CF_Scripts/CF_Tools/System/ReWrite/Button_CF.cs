@@ -183,16 +183,6 @@ public class Button_CF : Button
         base.OnTransformParentChanged();
     }
 
-    protected override void OnValidate()
-    {
-        base.OnValidate();
-    }
-
-    protected override void Reset()
-    {
-        base.Reset();
-    }
-
     protected override void Start()
     {
         base.Start();

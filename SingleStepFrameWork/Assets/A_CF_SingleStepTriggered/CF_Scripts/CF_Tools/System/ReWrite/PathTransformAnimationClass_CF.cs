@@ -57,7 +57,7 @@ public class PathTransformAnimationClass_CF : ReWriteGameControl_CF {
     /// <summary>
     /// 和路径动画相关联的mesh文字,在正式开始动画前会展示它,假如它存在的话
     /// </summary>
-    GameObject nameQuad;
+    public GameObject nameQuad;
 
     /// <summary>
     ///矩阵路径动画节点纪录列表
@@ -152,9 +152,16 @@ public class PathTransformAnimationClass_CF : ReWriteGameControl_CF {
 
     protected override void Awake()
     {
-        if(transform.Find("NameQuad") !=null)
+        if(nameQuad==null)
         {
-            nameQuad = transform.Find("NameQuad").gameObject;
+            if (transform.Find("NameQuad") != null)
+            {
+                nameQuad = transform.Find("NameQuad").gameObject;
+                nameQuad.SetActive(false);
+            }
+        }
+        else
+        {
             nameQuad.SetActive(false);
         }
         base.Awake();
@@ -861,7 +868,7 @@ public class PathTransformAnimationClass_CF : ReWriteGameControl_CF {
             {
                 nameQuad.SetActive(true);
                 timer = 0;
-                while (timer < 1.0)
+                while (timer < 1.5)
                 {
                     timer += waitRate;
                     yield return new WaitForSeconds(waitRate);
