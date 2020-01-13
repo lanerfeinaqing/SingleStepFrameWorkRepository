@@ -126,8 +126,60 @@ public class SceneLogicManager_CF : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// 通过外部传参数来设置某一个步骤的步骤文本信息
+    /// </summary>
+    /// <param name="message"></param>
+    public void UpdateStepsTextFunc(string message)
+    {
+        if (GlobalProperty_CF.sceneMode == SceneMode.lianxi)
+        {
+            if (!StepImage.gameObject.activeInHierarchy)
+            {
+                StepImage.gameObject.SetActive(true);
+            }
+            string sss = "当前步骤:" + message;
+            stepText.text = sss;
+            UpdateTipsFunc(GlobalConfigurationInformation_CF.StepInformationDic[sceneName][stepsCounter].TiShi);
+            if (!stepBigImageScript.gameObject.activeInHierarchy)
+            {
+                stepBigImageScript.gameObject.SetActive(true);
+            }
+            stepBigImageScript.PlayAnimation(sss);
+            if (stepsCounter + 1 < GlobalConfigurationInformation_CF.StepInformationDic[sceneName].Count)
+            {
+                stepsCounter += 1;
+            }
+        }
+
+    }
+
+
+
+
+
 
     /// 更新步骤信息文本框文字无动画
+    /// </summary>
+    public void UpdateStepsTextNoAnimationFunc(string message)
+    {
+        if (GlobalProperty_CF.sceneMode == SceneMode.lianxi)
+        {
+            if (!StepImage.gameObject.activeInHierarchy)
+            {
+                StepImage.gameObject.SetActive(true);
+            }
+            string sss = "当前步骤:" + message;
+            stepText.text = sss;
+            UpdateTipsFunc(GlobalConfigurationInformation_CF.StepInformationDic[sceneName][stepsCounter].TiShi);
+            if (stepsCounter + 1 < GlobalConfigurationInformation_CF.StepInformationDic[sceneName].Count)
+            {
+                stepsCounter += 1;
+            }
+        }
+    }
+    /// <summary>
+    /// 通过外部传参数来设置某一个步骤的步骤文本信息
     /// </summary>
     public void UpdateStepsTextNoAnimationFunc()
     {
@@ -149,10 +201,23 @@ public class SceneLogicManager_CF : MonoBehaviour {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     /// <summary>
     /// 更新提示信息文本框
     /// </summary>
-     void UpdateTipsFunc(string s)
+    void UpdateTipsFunc(string s)
     {
         if(!s.Equals("nothing"))
         {

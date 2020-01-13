@@ -115,7 +115,7 @@ public class MoiveController_CF : MonoBehaviour,IPointerClickHandler
     void EndMoive(VideoPlayer con)
     {
         sliderParentObj.SetActive(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
 
@@ -212,6 +212,7 @@ public class MoiveController_CF : MonoBehaviour,IPointerClickHandler
     {
         escapePanel.panelDisActiveEvent -= MoviePlay;
         escapePanel.panelActiveEvent -= MoviePause;
+        Cursor.visible = true;
     }
 
 
